@@ -15,7 +15,7 @@ set(GLOBAL_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Builds)
 # ======================================
 # 🟦 Build Toggles (Options)
 # ======================================
-option(BUILD_TOOL_A "Build Tool A" ON)
+option(Hello_World "Building Hello World" ON)
 
 # ======================================
 # 🟩 Macro: define_tool
@@ -47,3 +47,23 @@ endfunction()
 # 🟥 Tool Definitions (Using Macro)
 # ======================================
 
+# Tool A
+if (Hello_World)
+    message(STATUS "🔨 Building Tool A")
+
+    set(ACTIVE_CLI_TOOL_SRCS
+        "${CMAKE_CURRENT_SOURCE_DIR}/CodeBase/HelloWorld/Src/Main.cpp"
+    )
+
+    set(ACTIVE_CLI_TOOL_HDRS
+        "${CMAKE_CURRENT_SOURCE_DIR}/CodeBase/HelloWorld/include/HelloWorld.h"
+    )
+
+    define_tool(
+        Hello_World
+        "${ACTIVE_CLI_TOOL_SRCS}"
+        "${ACTIVE_CLI_TOOL_HDRS}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/CodeBase/HelloWorld/include"
+        "Hello_World"  # 👈 This becomes your sub-folder under Debug/Release
+    )
+endif()
