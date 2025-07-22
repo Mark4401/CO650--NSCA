@@ -15,55 +15,16 @@ set(GLOBAL_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Builds)
 # ======================================
 # 🟦 Build Toggles (Options)
 # ======================================
-option(Hello_World "Building Hello World" ON)
+option(Hello_World "Building Hello World" OFF)
+option(Part-1 "Building Hello World" ON)
 
-# ======================================
-# 🟩 Macro: define_tool
-# ======================================
-# define_tool(name sources headers include_dir sub-folder)
-function(define_tool TOOL_NAME SRC_LIST HDR_LIST INCLUDE_DIRS SUBFOLDER)
-    add_executable(${TOOL_NAME} ${SRC_LIST} ${HDR_LIST})
-
-    target_include_directories(${TOOL_NAME} PRIVATE ${INCLUDE_DIRS})
-
-    if (WIN32)
-        target_compile_definitions(${TOOL_NAME} PRIVATE UNICODE _UNICODE)
-    endif()
-
-    target_compile_options(${TOOL_NAME} PRIVATE
-        $<$<CXX_COMPILER_ID:MSVC>:/utf-8>
-        $<$<CXX_COMPILER_ID:GNU>:-finput-charset=UTF-8 -fexec-charset=UTF-8>
-        $<$<CXX_COMPILER_ID:Clang>:-finput-charset=UTF-8 -fexec-charset=UTF-8>
-    )
-
-    set_target_properties(${TOOL_NAME} PROPERTIES
-        ARCHIVE_OUTPUT_DIRECTORY ${GLOBAL_OUTPUT_DIR}/${SUBFOLDER}/$<CONFIG>
-        LIBRARY_OUTPUT_DIRECTORY ${GLOBAL_OUTPUT_DIR}/${SUBFOLDER}/$<CONFIG>
-        RUNTIME_OUTPUT_DIRECTORY ${GLOBAL_OUTPUT_DIR}/${SUBFOLDER}/$<CONFIG>
-    )
-endfunction()
-
+# Load your custom function
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+include(define_tool)
 # ======================================
 # 🟥 Tool Definitions (Using Macro)
 # ======================================
 
-# Tool A
-if (Hello_World)
-    message(STATUS "🔨 Building Tool A")
+add_subdirectory(CodeBase/HelloWorld)
+add_subdirectory(CodeBase/CO650-Part-1)
 
-    set(ACTIVE_CLI_TOOL_SRCS
-        "${CMAKE_CURRENT_SOURCE_DIR}/CodeBase/HelloWorld/Src/Main.cpp"
-    )
-
-    set(ACTIVE_CLI_TOOL_HDRS
-        "${CMAKE_CURRENT_SOURCE_DIR}/CodeBase/HelloWorld/include/HelloWorld.h"
-    )
-
-    define_tool(
-        Hello_World
-        "${ACTIVE_CLI_TOOL_SRCS}"
-        "${ACTIVE_CLI_TOOL_HDRS}"
-        "${CMAKE_CURRENT_SOURCE_DIR}/CodeBase/HelloWorld/include"
-        "Hello_World"  # 👈 This becomes your sub-folder under Debug/Release
-    )
-endif()

@@ -12,7 +12,11 @@
       "ctestCommandArgs": "",
       "variables": [
         {
-          "name": "BUILD_TOOL_A",
+          "name": "Hello_World",
+          "value": "OFF"
+        },
+        {
+          "name": "Part-1",
           "value": "ON"
         }
       ]
@@ -29,7 +33,11 @@
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "variables": [
         {
-          "name": "BUILD_TOOL_A",
+          "name": "Hello_World",
+          "value": "OFF"
+        },
+        {
+          "name": "Part-1",
           "value": "ON"
         }
       ]

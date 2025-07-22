@@ -1,0 +1,19 @@
+if(Part-1)
+    message(STATUS "Building....")
+
+    set(Part-1-SRC
+        "${CMAKE_CURRENT_SOURCE_DIR}/Src/intro.cpp"
+    )
+    set(Part-1-HDR
+        "${CMAKE_CURRENT_SOURCE_DIR}/Include/intro.h"
+    )
+    define_tool(
+        Part-1
+        exe
+        "${Part-1-SRC}"
+        "${Part-1-HDR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Include"
+        "Part-1"
+        "ws2_32"
+    )
+endif()
