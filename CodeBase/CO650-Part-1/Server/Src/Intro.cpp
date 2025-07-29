@@ -30,7 +30,15 @@ int main(int argc, char* argv[])
 
 	cout << "\nStep 3: Bind IP/Port to Server Socket.\n";
 
-	Demo.addServerSocket();
+	Demo.BindServerSocket();
+
+	cout << "\nStep 4: Listen.\n";
+
+	Demo.listenClinetConnection();
+
+	cout << "\nStep 5: Client Connection successful.\n";
+
+	Demo.socketAccepted();
 
 	return 0;
 }

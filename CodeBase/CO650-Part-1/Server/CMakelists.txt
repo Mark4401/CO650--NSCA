@@ -10,7 +10,7 @@ if(Part-1)
         "${CMAKE_CURRENT_SOURCE_DIR}/Include/WinSock2-Example.h"
     )
     define_tool(
-        Part-1.C
+        Server
         exe
         "${Part-1-SRC}"
         "${Part-1-HDR}"

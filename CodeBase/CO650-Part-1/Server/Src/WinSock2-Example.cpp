@@ -71,3 +71,39 @@ int WinSock_2_Demo::BindServerSocket()
 	}
 	//return 0;
 }
+
+int WinSock_2_Demo::listenClinetConnection()
+{
+	// AcceptSocket = accept(ServerSocket, NULL, NULL);
+
+	if ( listen(ServerSocket, 1) == SOCKET_ERROR )
+	{
+		cout << "\nConnection Accepts-ion failed!\n" << WSAGetLastError() << "\n";
+		WSACleanup();
+		return -1;
+	}
+	else
+	{
+		cout << "\Acceptance Successful!\n";
+		return 0;
+	}
+}
+
+int WinSock_2_Demo::socketAccepted()
+{
+	AcceptSocket = accept(ServerSocket, NULL, NULL);
+
+	if (AcceptSocket == INVALID_SOCKET)
+	{
+		cout << "\nAccepted Failed: " << WSAGetLastError() << "\n";
+		WSACleanup();
+		return -1;
+	}
+	else
+	{
+		cout << "\Connection Accepted.\n";
+		system("Pause");
+		WSACleanup();
+		return 0;
+	}
+}

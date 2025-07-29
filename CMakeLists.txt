@@ -26,5 +26,6 @@ include(define_tool)
 # ======================================
 
 add_subdirectory(CodeBase/HelloWorld)
-add_subdirectory(CodeBase/CO650-Part-1)
+add_subdirectory(CodeBase/CO650-Part-1/Server)
+add_subdirectory(CodeBase/CO650-Part-1/Client)
 

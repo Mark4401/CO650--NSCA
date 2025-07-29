@@ -32,6 +32,8 @@ public:
 	int FindWinsock2();
     int addServerSocket();
     int BindServerSocket();
+    int listenClinetConnection();
+    int socketAccepted();
 
 private:
     SOCKET ServerSocket, AcceptSocket;
