@@ -1,0 +1,19 @@
+if(Part-1)
+    message(STATUS "Building....")
+
+    set(Part-1-Client-SRC
+        "${CMAKE_CURRENT_SOURCE_DIR}/Src/Client.cpp"
+    )
+    set(Part-1-Client-HDR
+        "${CMAKE_CURRENT_SOURCE_DIR}/Include/Client.h"
+        )
+    define_tool(
+        Client
+        exe
+        "${Part-1-Client-SRC}"
+        "${Part-1-Client-HDR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Include"
+        "Part-1-client"
+        "ws2_32"
+    )
+endif()                                         

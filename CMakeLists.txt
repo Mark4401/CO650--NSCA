@@ -16,7 +16,7 @@ set(GLOBAL_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Builds)
 # 🟦 Build Toggles (Options)
 # ======================================
 option(Hello_World "Building Hello World" OFF)
-option(Part-1 "Building Hello World" ON)
+option(Part-1 "Server&Client Part-1" ON)
 
 # Load your custom function
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -25,7 +25,9 @@ include(define_tool)
 # 🟥 Tool Definitions (Using Macro)
 # ======================================
 
-add_subdirectory(CodeBase/HelloWorld)
-add_subdirectory(CodeBase/CO650-Part-1/Server)
-add_subdirectory(CodeBase/CO650-Part-1/Client)
+add_subdirectory(CodeBase/archived/HelloWorld)
+add_subdirectory(CodeBase/archived/CO650-Part-1/Server)
+add_subdirectory(CodeBase/archived/CO650-Part-1/Client)
+
+
 
