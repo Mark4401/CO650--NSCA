@@ -11,3 +11,5 @@ go to:
 `Frame2` - shows the actual hidden files. which are represented by an red dot next to the file/folder/etc...
 
 ![Frame2](../Materials/Pictures/Frame2.png)
+
+[Home Page](../README.md) 
